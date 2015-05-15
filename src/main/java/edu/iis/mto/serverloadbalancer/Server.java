@@ -27,4 +27,7 @@ public class Server {
 		return vms.size();
 	}
 
+	public int getCapacity() {
+		return this.capacity;
+	}
 }
