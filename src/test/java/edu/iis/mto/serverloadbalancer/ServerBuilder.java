@@ -12,4 +12,7 @@ public class ServerBuilder {
 		return new Server(this.capacity);
 	}
 
+	public static ServerBuilder server() {
+		return new ServerBuilder();
+	}
 }
