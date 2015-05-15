@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ServerLoadBalancer {
 	
-	public void balance(ArrayList<Server>servers, ArrayList<Vm>vms) {
+	public void balance(Server[] servers, Vm[] vms) {
 		//TODO
 	}
 }

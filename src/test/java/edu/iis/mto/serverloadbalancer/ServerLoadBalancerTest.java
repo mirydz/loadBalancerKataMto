@@ -28,15 +28,12 @@ public class ServerLoadBalancerTest {
 		return new CurrentLoadPercentageMatcher(expectedLoadPercentage);
 	}
 
-	private ArrayList<Vm> anEmptyListOfVms() {
-		return new ArrayList<Vm>();
+	private Vm[] anEmptyListOfVms() {
+		return new Vm[0];
 	}
 
-	private ArrayList<Server> aListOfServersWith(Server theServer) {
-		ArrayList<Server> listOfServers = new ArrayList<Server>();
-		listOfServers.add(theServer);
-		
-		return listOfServers;
+	private Server[] aListOfServersWith(Server server) {
+		return new Server[] {server};
 	}
 
 	private Server a(ServerBuilder builder) {
@@ -47,7 +44,7 @@ public class ServerLoadBalancerTest {
 		return new ServerBuilder();
 	}
 	
-	private void balance(ArrayList<Server>servers, ArrayList<Vm>vms) {
+	private void balance(Server[] servers, Vm[] vms) {
 		new ServerLoadBalancer().balance(servers, vms);
 	}
 
