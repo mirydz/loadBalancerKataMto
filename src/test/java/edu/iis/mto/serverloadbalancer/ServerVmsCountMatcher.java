@@ -1,8 +1,8 @@
 package edu.iis.mto.serverloadbalancer;
 
 import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import sun.security.krb5.internal.crypto.Des;
 
 public class ServerVmsCountMatcher extends TypeSafeMatcher<Server> {
     int expectedCount;
@@ -17,8 +17,7 @@ public class ServerVmsCountMatcher extends TypeSafeMatcher<Server> {
     }
 
     @Override
-    protected void describeMismatchSafely(Server item,
-          Description description) {
+    protected void describeMismatchSafely(Server item, Description description) {
         description.appendText("a server with vms count of ").appendValue(
                 item.vmsCount());
     }
@@ -27,4 +26,9 @@ public class ServerVmsCountMatcher extends TypeSafeMatcher<Server> {
         description.appendText("a server with vms count of ")
                 .appendValue(expectedCount);
     }
+
+    public static Matcher<? super Server> hasVmsCountOf(int expectedCount) {
+        return new ServerVmsCountMatcher(expectedCount);
+    }
+
 }

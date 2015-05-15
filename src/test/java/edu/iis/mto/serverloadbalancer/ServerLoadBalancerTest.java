@@ -1,6 +1,7 @@
 package edu.iis.mto.serverloadbalancer;
 
 import static edu.iis.mto.serverloadbalancer.CurrentLoadPercentageMatcher.hasLoadPercentageOf;
+import static edu.iis.mto.serverloadbalancer.ServerVmsCountMatcher.hasVmsCountOf;
 import static edu.iis.mto.serverloadbalancer.ServerBuilder.server;
 import static edu.iis.mto.serverloadbalancer.VmBuilder.vm;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,7 +15,7 @@ public class ServerLoadBalancerTest {
 	public void itCompiles() {
 		assertThat(true, equalTo(true));
 	}
-	
+
 	@Test
 	public void balancingAServer_noVms_serverStaysEmpty() {
 		Server theServer = a(server().withCapacity(1));
@@ -55,9 +56,7 @@ public class ServerLoadBalancerTest {
 		assertThat("the server should contain vm", theServer.contains(theSecondVm));
 	}
 
-	private Matcher<? super Server> hasVmsCountOf(int expectedCount) {
-		return new ServerVmsCountMatcher(expectedCount);
-	}
+
 
 	private Vm[] anEmptyListOfVms() {
 		return new Vm[0];
