@@ -30,4 +30,8 @@ public class Server {
 	public int getCapacity() {
 		return this.capacity;
 	}
+
+	public boolean canFit(Vm vm) {
+		return this.currentLoadPercentage + ((double)vm.size / (double)this.capacity * MAXIMUM_LOAD) <= MAXIMUM_LOAD;
+	}
 }
